@@ -62,22 +62,21 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 
-def step_test():
-    x = np.arange(-5.0, 5.0, 0.1)
-    y = step(x)
-    plt.plot(x, y)
+def relu(x):
+    return np.maximum(0, x)
 
 
-def sigmoid_test():
+def activation_function_test():
     x = np.arange(-5.0, 5.0, 0.1)
-    y = sigmoid(x)
-    plt.plot(x, y)
+    plt.plot(x, step(x))
+    plt.plot(x, sigmoid(x))
+    plt.plot(x, relu(x))
+    plt.ylim(-0.1, 1.1)
+    plt.show()
 
 
 def main():
-    step_test()
-    sigmoid_test()
-    plt.show()
+    activation_function_test()
 
 
 if __name__ == "__main__":
