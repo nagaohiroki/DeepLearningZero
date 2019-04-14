@@ -1,9 +1,12 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def main():
-    x = np.array([1, 2, 3])
-    print(x)
+    x = np.arange(0, 6, 0.1)
+    y = np.sin(x)
+    plt.plot(x, y)
+    plt.show()
 
 
 if __name__ == "__main__":
