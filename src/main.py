@@ -54,8 +54,30 @@ def mod_test():
     plt.show()
 
 
+def step(x):
+    return (x > 0).astype(np.int)
+
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+
+def step_test():
+    x = np.arange(-5.0, 5.0, 0.1)
+    y = step(x)
+    plt.plot(x, y)
+
+
+def sigmoid_test():
+    x = np.arange(-5.0, 5.0, 0.1)
+    y = sigmoid(x)
+    plt.plot(x, y)
+
+
 def main():
-    perceptron_test()
+    step_test()
+    sigmoid_test()
+    plt.show()
 
 
 if __name__ == "__main__":
