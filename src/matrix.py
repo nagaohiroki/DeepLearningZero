@@ -18,16 +18,9 @@ def matrix_test():
     print(Z2)
 
 
-def softmax(a):
-    c = np.max(a)
-    exp_a = np.exp(a - c)
-    sum_exp = np.sum(exp_a)
-    return exp_a / sum_exp
-
-
 if __name__ == "__main__":
-    a = softmax(np.array([1010, 1000, 990]))
-    b = softmax(np.array([0.3, 2.9, 7.0]))
+    a = activation_function.softmax(np.array([1010, 1000, 990]))
+    b = activation_function.softmax(np.array([0.3, 2.9, 7.0]))
     print(a)
     print(b)
     print(np.sum(b))
