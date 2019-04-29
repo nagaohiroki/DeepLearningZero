@@ -61,6 +61,13 @@ def main():
             accuracy_cnt += 1
     print("accuracy_cnt" + str(float(accuracy_cnt) / len(x)))
 
+    # check shape
+    W1, W2, W3 = network['W1'], network['W2'], network['W3']
+    print(x[0].shape)
+    print(W1.shape)
+    print(W2.shape)
+    print(W3.shape)
+
 
 if __name__ == "__main__":
     main()
