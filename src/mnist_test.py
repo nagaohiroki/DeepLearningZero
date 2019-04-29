@@ -50,7 +50,7 @@ def predict(network, x):
     return activation_function.softmax(a3)
 
 
-def main():
+def neural_network_test():
     x, t = get_data()
     network = init_network()
     accuracy_cnt = 0
@@ -59,7 +59,7 @@ def main():
         p = np.argmax(y)
         if p == t[i]:
             accuracy_cnt += 1
-    print("accuracy_cnt" + str(float(accuracy_cnt) / len(x)))
+    print("accuracy_cnt : " + str(float(accuracy_cnt) / len(x)))
 
     # check shape
     W1, W2, W3 = network['W1'], network['W2'], network['W3']
@@ -67,6 +67,24 @@ def main():
     print(W1.shape)
     print(W2.shape)
     print(W3.shape)
+
+
+def mini_bacth_test():
+    x, t = get_data()
+    network = init_network()
+    accuracy_cnt = 0
+    bacth_size = 100
+    print(x.shape)
+    for i in range(0, len(x), bacth_size):
+        x_batch = x[i:i+bacth_size]
+        x_batch = predict(network, x_batch)
+        p = np.argmax(x_batch, axis=1)
+        accuracy_cnt += np.sum(p == t[i:i+bacth_size])
+    print("accuracy_cnt : " + str(float(accuracy_cnt) / len(x)))
+
+
+def main():
+    mini_bacth_test()
 
 
 if __name__ == "__main__":
