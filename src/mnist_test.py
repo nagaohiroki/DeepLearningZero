@@ -26,13 +26,15 @@ def mnist_test():
 
 
 def init_network():
-    with open('dataset/mnist.pkl', 'rb') as f:
+    with open('dataset/sample_weight.pkl', 'rb') as f:
         network = pickle.load(f)
     return network
 
 
 def get_data():
-    data = dataset.mnist.load_mnist(flatten=True, normalize=False)
+    data = dataset.mnist.load_mnist(normalize=True,
+                                    flatten=True,
+                                    one_hot_label=False)
     (x_train, t_train), (x_test, t_test) = data
     return x_test, t_test
 
@@ -49,14 +51,15 @@ def predict(network, x):
 
 
 def main():
-    pass
-    '''
     x, t = get_data()
     network = init_network()
     accuracy_cnt = 0
     for i in range(len(x)):
         y = predict(network, x[i])
-    '''
+        p = np.argmax(y)
+        if p == t[i]:
+            accuracy_cnt += 1
+    print("accuracy_cnt" + str(float(accuracy_cnt) / len(x)))
 
 
 if __name__ == "__main__":
