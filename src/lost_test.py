@@ -45,7 +45,7 @@ def numerical_diff(f, x):
     return (f(x + h) - f(x)) / h
 
 
-def function(x):
+def function_2(x):
     return np.sum(x ** 2)
 
 
@@ -64,9 +64,21 @@ def numerical_gradient(f, x):
 
 
 def main():
-    print(numerical_gradient(function, np.array([3.0, 4.0])))
-    print(numerical_gradient(function, np.array([0.0, 2.0])))
-    print(numerical_gradient(function, np.array([3.0, 0.0])))
+    x0 = np.arange(-2, 2.5, 0.25)
+    x1 = np.arange(-2, 2.5, 0.25)
+    X, Y = np.meshgrid(x0, x1)
+    X = X.flatten()
+    Y = Y.flatten()
+
+    print(numerical_gradient(function_2, X))
+    # grad = numerical_gradient(function_2, np.array([X, Y]).T).T
+    # plt.figure()
+    # plt.quiver(X, Y, -grad[0], -grad[1], angles="xy", color="#666666")
+    # plt.xlim([-2, 2])
+    # plt.ylim([-2, 2])
+    # plt.grid()
+    # plt.draw()
+    # plt.show()
 
 
 if __name__ == '__main__':
